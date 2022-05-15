@@ -39,10 +39,10 @@ class RoleAndPermissionSeeder extends Seeder
         $edit_news = Permission::create(['name' => 'Chỉnh sửa tin tức']);
         $delete_news = Permission::create(['name' => 'Xóa tin tức']);
 
-        // $super_admin->givePermissionTo($view_news);
-        // $super_admin->givePermissionTo($create_news);
-        // $super_admin->givePermissionTo($edit_news);
-        // $super_admin->givePermissionTo($delete_news);
+        $super_admin->givePermissionTo($view_news);
+        $super_admin->givePermissionTo($create_news);
+        $super_admin->givePermissionTo($edit_news);
+        $super_admin->givePermissionTo($delete_news);
 
         // $view_contact = Permission::create(['name' => 'Xem danh sách liên hệ']);
         // $delete_contact = Permission::create(['name' => 'Xóa liên hệ']);
