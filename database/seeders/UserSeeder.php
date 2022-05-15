@@ -19,9 +19,9 @@ class UserSeeder extends Seeder
         User::create([
             'id' => 1,
             'code' => 'SUPER ADMIN',
-        	'email' => 'ducthang.dt03@gmail.com',
+        	'email' => 'admin@gmail.com',
         	'password' => bcrypt('123123123'),
-        	'name' => 'Super Admin',
+        	'name' => 'Admin',
         	'birthday' => '1999-03-21',
         	'phone_number' => '0563047024',
         	'address' => 'Đại học kiến trúc Hà Nội',
