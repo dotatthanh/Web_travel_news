@@ -21,18 +21,21 @@ use App\Http\Requests\PostProductRequest;
 use App\Mail\ResetPasswordCustomer;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
+use App;
 
 class WebController extends Controller
 {
     public function index()
     {
-    	$latest_news = News::limit(4)->latest()->get();
+    	// $latest_news = News::limit(4)->latest()->get();
 
-    	$data = [
-    		'latest_news' => $latest_news,
-    	];
+    	// $data = [
+    	// 	'latest_news' => $latest_news,
+    	// ];
 
-    	return view('web.index', $data);
+    	// return view('web.index', $data);
+
+        return view('web.index');
     }
 
     public function search(Request $request)
@@ -303,5 +306,13 @@ class WebController extends Controller
         else {
             return redirect()->back()->with('alert-error','Không tìm thấy tài khoản trong hệ thống!');
         }
+    }
+
+    public function change(Request $request)
+    {
+        App::setLocale($request->lang);
+        session()->put('locale', $request->lang);
+  
+        return redirect()->back();
     }
 }

@@ -81,3 +81,5 @@ Route::prefix('admin')->group(function () {
 	Route::get('/chi-tiet-tin-tuc/{id}', [WebController::class, 'newsDetail'])->name('web.news-detail');
 	Route::get('/lien-he', [WebController::class, 'contact'])->name('web.contact');
 	Route::post('/post-lien-he', [WebController::class, 'postContact'])->name('web.post-contact');
+
+	Route::get('/lang/change', [WebController::class, 'change'])->name('web.change');
