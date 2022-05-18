@@ -15,6 +15,7 @@
                 <select class="form-control changeLang">
                     <option value="vi" {{ session()->get('locale') == 'vi' ? 'selected' : '' }}>VietNam</option>
                     <option value="en" {{ session()->get('locale') == 'en' ? 'selected' : '' }}>English</option>
+                    <option value="ja" {{ session()->get('locale') == 'ja' ? 'selected' : '' }}>Japan</option>
                 </select>
             </div>
         </div>
