@@ -26,29 +26,94 @@
     <link rel="stylesheet" href="{{ asset('css/select2.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('jquery-fancybox/dist/jquery.fancybox.min.css') }}" type="text/css">
 </head>
-<body>
-    <header class="header-index">
+<body class="bg-body">
+    <header class="header">
         <div class="container">
-            <div class="row">
-                <div class="col-auto">
+            <div class="row align-items-center justify-content-between">
+                <div class="col-lg-3 col-md-5 col-sm-6 col-8">
                     <a href="#" title="" class="c-img logo">
-                        <img src="{{ asset('images/logo.png') }}" alt="" title="">
+                        <img src="{{ asset('images/logo.png') }}" alt="">
                     </a>
-                    <h1>Asia & Beyond</h1>
-                    <a href="#" title="" class="link-web">Video Production</a>
-                    <div class="icon">
-                        <a href="#" title=""><i class="fa fa-envelope-o" aria-hidden="true"></i></a>
-                        <a href="#" title=""><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                        <a href="#" title=""><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                        <a href="#" title=""><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                    </div>
+                </div>
+                <div class="col-lg-auto menu">
+                    <ul>
+                        <li><a href="{{ route('web.index') }}" title="">Trang chủ</a></li>
+                        <li><a href="{{ route('web.ads') }}" title="">Quảng bá</a></li>
+                        <li><a href="javascript:void(0)" title="">Tin tức du lịch</a>
+                            <ul>
+                                <li><a href="#" title="">Home</a></li>
+                                <li><a href="#" title="">Video Production</a></li>
+                                <li><a href="#" title="">Showreels</a></li>
+                                <li><a href="#" title="">Client List</a></li>
+                                <li><a href="#" title="">More Info</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="javascript:void(0)" title="">Tin tức ẩm thực</a>
+                            <ul>
+                                <li><a href="#" title="">Home</a></li>
+                                <li><a href="#" title="">Video Production</a></li>
+                                <li><a href="#" title="">Showreels</a></li>
+                                <li><a href="#" title="">Client List</a></li>
+                                <li><a href="#" title="">More Info</a></li>
+                            </ul>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
     </header>
-    <video loop muted autoplay class="video-index">
-        <source src="{{ asset('video/video.mp4') }}" type="video/mp4">
-    </video>
+
+    <button class="btn-bars"><i class="fa fa-bars" aria-hidden="true"></i></button>
+
+    <div class="menu-mobile">
+        <ul>
+            <li><a href="#" title="">Home</a></li>
+            <li><a href="#" title="" title="">Video Production</a>
+                <ul>
+                    <li><a href="#" title="">Hotels, Resorts, and Properties</a></li>
+                    <li><a href="#" title="">Video Production</a></li>
+                    <li><a href="#" title="">Showreels</a></li>
+                    <li><a href="#" title="">Client List</a></li>
+                    <li><a href="#" title="">More Info</a></li>
+                </ul>
+            </li>
+            <li><a href="#" title="">Showreels</a>
+                <ul>
+                    <li><a href="#" title="">Home</a></li>
+                    <li><a href="#" title="">Video Production</a></li>
+                    <li><a href="#" title="">Showreels</a></li>
+                    <li><a href="#" title="">Client List</a></li>
+                    <li><a href="#" title="">More Info</a></li>
+                </ul>
+            </li>
+            <li><a href="#" title="">Client List</a></li>
+            <li><a href="#" title="">More Info</a>
+                <ul>
+                    <li><a href="#" title="">Home</a></li>
+                    <li><a href="#" title="">Video Production</a></li>
+                    <li><a href="#" title="">Showreels</a></li>
+                    <li><a href="#" title="">Client List</a></li>
+                    <li><a href="#" title="">More Info</a></li>
+                </ul>
+            </li>
+        </ul>
+        <div class="info-contact">
+            <p>Mott Visuals</p>
+            <p>Floor 2, Packexim I Building No 49, Lane 15, An Duong Vuong</p>
+            <p>Hanoi</p>
+            <p>Vietnam</p>
+            <p><a href="tel:0564654654" title="">+84 (0)985828883</a></p>
+        </div>
+    </div>
+
+    @yield('content')
+
+
+    <div class="email">
+        <a href="mailto:abc@gmail.com" title=""><i class="fa fa-envelope-o" aria-hidden="true"></i>EMAIL</a>
+    </div>
+
+    <button class="back-to-top"><i class="fa fa-chevron-up" aria-hidden="true"></i></button>
 
     <script src="{{ asset('js/jquery-2.2.1.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>

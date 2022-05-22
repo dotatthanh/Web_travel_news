@@ -38,6 +38,22 @@ class WebController extends Controller
         return view('web.index');
     }
 
+    public function categoryNewsTravel()
+    {
+        return view('web.category-news-travel');
+    }
+
+    public function categoryNewsCulinary()
+    {
+        return view('web.category-news-travel');
+    }
+
+    public function ads()
+    {
+        return view('web.ads');
+    }
+
+
     public function search(Request $request)
     {
         $products = Product::paginate(8);
@@ -97,216 +113,216 @@ class WebController extends Controller
     	return view('web.news-detail', $data);
     }
 
-    public function contact()
-    {
-    	$info = Info::findOrFail(1);
+    // public function contact()
+    // {
+    // 	$info = Info::findOrFail(1);
 
-    	$data = [
-    		'info' => $info,
-    	];
+    // 	$data = [
+    // 		'info' => $info,
+    // 	];
 
-    	return view('web.contact', $data);
-    }
+    // 	return view('web.contact', $data);
+    // }
 
-    public function postContact(StoreContactRequest $request)
-    {
-    	try {
-            DB::beginTransaction();
+    // public function postContact(StoreContactRequest $request)
+    // {
+    // 	try {
+    //         DB::beginTransaction();
             
-            Contact::create([
-                'name' => $request->name,
-                'email' => $request->email,
-                'content' => $request->content,
-                'phone_number' => $request->phone_number,
-            ]);
+    //         Contact::create([
+    //             'name' => $request->name,
+    //             'email' => $request->email,
+    //             'content' => $request->content,
+    //             'phone_number' => $request->phone_number,
+    //         ]);
 
-            DB::commit();
-            return redirect()->back()->with('alert-error','Gửi phản hồi thành công!');
-        } catch (Exception $e) {
-            DB::rollback();
-            return redirect()->back()->with('alert-error','Gửi phản hồi thất bại!');
-        }
-    }
+    //         DB::commit();
+    //         return redirect()->back()->with('alert-error','Gửi phản hồi thành công!');
+    //     } catch (Exception $e) {
+    //         DB::rollback();
+    //         return redirect()->back()->with('alert-error','Gửi phản hồi thất bại!');
+    //     }
+    // }
 
-    public function productDetail($id)
-    {
-    	$product = Product::findOrFail($id);
+    // public function productDetail($id)
+    // {
+    // 	$product = Product::findOrFail($id);
 
-    	$data = [
-    		'product' => $product,
-    	];
+    // 	$data = [
+    // 		'product' => $product,
+    // 	];
 
-    	return view('web.product-detail', $data);
-    }
+    // 	return view('web.product-detail', $data);
+    // }
 
-    public function login()
-    {
-    	return view('web.login');
-    }
+    // public function login()
+    // {
+    // 	return view('web.login');
+    // }
 
-    public function postLogin(LoginRequest $request)
-    {
-        $credentials = $request->validate([
-            'email' => ['required', 'email'],
-            'password' => ['required'],
-        ]);
+    // public function postLogin(LoginRequest $request)
+    // {
+    //     $credentials = $request->validate([
+    //         'email' => ['required', 'email'],
+    //         'password' => ['required'],
+    //     ]);
 
-        if (Auth::guard('web')->attempt($credentials)) {
-            // $request->session()->regenerate();
+    //     if (Auth::guard('web')->attempt($credentials)) {
+    //         // $request->session()->regenerate();
 
-            // return redirect()->intended('/');
-            return redirect()->route('web.index')->with('alert-success','Đăng nhập thành công!');
-        }
+    //         // return redirect()->intended('/');
+    //         return redirect()->route('web.index')->with('alert-success','Đăng nhập thành công!');
+    //     }
 
-        return back()->withErrors([
-            'email' => 'Email hoặc mật khẩu không đúng!',
-        ]);
-    }
+    //     return back()->withErrors([
+    //         'email' => 'Email hoặc mật khẩu không đúng!',
+    //     ]);
+    // }
 
-    public function logout() {
-        auth()->guard('web')->logout();
-        return redirect()->intended('/');
-    }
+    // public function logout() {
+    //     auth()->guard('web')->logout();
+    //     return redirect()->intended('/');
+    // }
 
-    public function register()
-    {
-    	return view('web.register');
-    }
+    // public function register()
+    // {
+    // 	return view('web.register');
+    // }
 
-    public function postRegister(StoreCustomerRequest $request) 
-    {
-        try {
-            DB::beginTransaction();
+    // public function postRegister(StoreCustomerRequest $request) 
+    // {
+    //     try {
+    //         DB::beginTransaction();
             
-            $file_path = '';
-            if ($request->file('avatar')) {
-                $name = time().'_'.$request->avatar->getClientOriginalName();
-                $file_path = 'uploads/avatar/customer/'.$name;
-                Storage::disk('public_uploads')->putFileAs('avatar/customer', $request->avatar, $name);
-            }
+    //         $file_path = '';
+    //         if ($request->file('avatar')) {
+    //             $name = time().'_'.$request->avatar->getClientOriginalName();
+    //             $file_path = 'uploads/avatar/customer/'.$name;
+    //             Storage::disk('public_uploads')->putFileAs('avatar/customer', $request->avatar, $name);
+    //         }
             
-            $customer = Customer::create([
-                'code' => '',
-                'name' => $request->name,
-                'email' => $request->email,
-                'password' => bcrypt($request->password),
-                'gender' => $request->gender,
-                'birthday' => date("Y-m-d", strtotime($request->birthday)),
-                'phone_number' => $request->phone_number,
-                'address' => $request->address,
-                'avatar' => $file_path,
-            ]);
+    //         $customer = Customer::create([
+    //             'code' => '',
+    //             'name' => $request->name,
+    //             'email' => $request->email,
+    //             'password' => bcrypt($request->password),
+    //             'gender' => $request->gender,
+    //             'birthday' => date("Y-m-d", strtotime($request->birthday)),
+    //             'phone_number' => $request->phone_number,
+    //             'address' => $request->address,
+    //             'avatar' => $file_path,
+    //         ]);
 
-            $customer->update([
-                'code' => 'KH'.str_pad($customer->id, 6, '0', STR_PAD_LEFT)
-            ]);
+    //         $customer->update([
+    //             'code' => 'KH'.str_pad($customer->id, 6, '0', STR_PAD_LEFT)
+    //         ]);
             
-            DB::commit();
-            return redirect()->route('web.login')->with('alert-success','Đăng ký thành công!');
-        } catch (Exception $e) {
-            DB::rollback();
-            return redirect()->back()->with('alert-error','Đăng ký thất bại!');
-        }
-    }
+    //         DB::commit();
+    //         return redirect()->route('web.login')->with('alert-success','Đăng ký thành công!');
+    //     } catch (Exception $e) {
+    //         DB::rollback();
+    //         return redirect()->back()->with('alert-error','Đăng ký thất bại!');
+    //     }
+    // }
 
-    public function profile()
-    {
-        return view('web.profile');
-    }
+    // public function profile()
+    // {
+    //     return view('web.profile');
+    // }
 
-    public function viewChangePassword() 
-    {
-        return view('web.change-password');
-    }
+    // public function viewChangePassword() 
+    // {
+    //     return view('web.change-password');
+    // }
 
-    public function changePassword(ChangePasswordRequest $request)
-    {
+    // public function changePassword(ChangePasswordRequest $request)
+    // {
 
-        try {
-            DB::beginTransaction();
-            $customer = auth()->guard('web')->user();
+    //     try {
+    //         DB::beginTransaction();
+    //         $customer = auth()->guard('web')->user();
 
-            if (Hash::check($request->password_old, $customer->password)) {
-                $customer->update([
-                    'password' => Hash::make($request->password),
-                ]);
-            }
+    //         if (Hash::check($request->password_old, $customer->password)) {
+    //             $customer->update([
+    //                 'password' => Hash::make($request->password),
+    //             ]);
+    //         }
             
-            DB::commit();
-            return redirect()->route('web.index')->with('alert-success','Đổi mật khẩu thành công!');
-        } catch (Exception $e) {
-            DB::rollback();
-            return redirect()->back()->with('alert-error','Đổi mật khẩu thất bại!');
-        }
-    }
+    //         DB::commit();
+    //         return redirect()->route('web.index')->with('alert-success','Đổi mật khẩu thành công!');
+    //     } catch (Exception $e) {
+    //         DB::rollback();
+    //         return redirect()->back()->with('alert-error','Đổi mật khẩu thất bại!');
+    //     }
+    // }
     
-    public function viewPostProduct() 
-    {
-        return view('web.post-product');
-    }
+    // public function viewPostProduct() 
+    // {
+    //     return view('web.post-product');
+    // }
 
-    public function postProduct(PostProductRequest $request)
-    {
-        try {
-            DB::beginTransaction();
+    // public function postProduct(PostProductRequest $request)
+    // {
+    //     try {
+    //         DB::beginTransaction();
 
-            if ($request->file('image')) {
-                $name = time().'_'.$request->image->getClientOriginalName();
-                $file_path_image = 'uploads/product/'.$name;
-                Storage::disk('public_uploads')->putFileAs('product', $request->image, $name);
-            }
+    //         if ($request->file('image')) {
+    //             $name = time().'_'.$request->image->getClientOriginalName();
+    //             $file_path_image = 'uploads/product/'.$name;
+    //             Storage::disk('public_uploads')->putFileAs('product', $request->image, $name);
+    //         }
 
-            if ($request->file('file')) {
-                $name = time().'_'.$request->file->getClientOriginalName();
-                $file_path_file = 'uploads/product/'.$name;
-                Storage::disk('public_uploads')->putFileAs('product', $request->file, $name);
-            }
+    //         if ($request->file('file')) {
+    //             $name = time().'_'.$request->file->getClientOriginalName();
+    //             $file_path_file = 'uploads/product/'.$name;
+    //             Storage::disk('public_uploads')->putFileAs('product', $request->file, $name);
+    //         }
             
-            $product = Product::create([
-                'code' => '',
-                'name' => $request->name,
-                'image' => $file_path_image,
-                'file' => $file_path_file,
-                'category_id' => $request->category_id,
-                'description' => $request->description,
-                'customer_id' => auth()->guard('web')->user()->id,
-            ]);
+    //         $product = Product::create([
+    //             'code' => '',
+    //             'name' => $request->name,
+    //             'image' => $file_path_image,
+    //             'file' => $file_path_file,
+    //             'category_id' => $request->category_id,
+    //             'description' => $request->description,
+    //             'customer_id' => auth()->guard('web')->user()->id,
+    //         ]);
 
-            $product->update([
-                'code' => 'SP'.str_pad($product->id, 6, '0', STR_PAD_LEFT)
-            ]);
+    //         $product->update([
+    //             'code' => 'SP'.str_pad($product->id, 6, '0', STR_PAD_LEFT)
+    //         ]);
             
-            DB::commit();
-            return redirect()->route('web.index')->with('alert-success','Đăng sản phẩm thành công! Sản phẩm của bạn đang chờ xét duyệt!');
-        } catch (Exception $e) {
-            DB::rollback();
-            return redirect()->back()->with('alert-error','Đăng sản phẩm thất bại!');
-        }
-    }
+    //         DB::commit();
+    //         return redirect()->route('web.index')->with('alert-success','Đăng sản phẩm thành công! Sản phẩm của bạn đang chờ xét duyệt!');
+    //     } catch (Exception $e) {
+    //         DB::rollback();
+    //         return redirect()->back()->with('alert-error','Đăng sản phẩm thất bại!');
+    //     }
+    // }
 
-    public function viewForgotPassword()
-    {
-        return view('web.forgot-password');
-    }
+    // public function viewForgotPassword()
+    // {
+    //     return view('web.forgot-password');
+    // }
 
-    public function forgotPassword(Request $request)
-    {
-        $user = Customer::where('email', $request->email)->first();
+    // public function forgotPassword(Request $request)
+    // {
+    //     $user = Customer::where('email', $request->email)->first();
 
-        if ($user) {
-            $password = Str::random(8);
-            $user->update([
-                'password' => bcrypt($password)
-            ]);
+    //     if ($user) {
+    //         $password = Str::random(8);
+    //         $user->update([
+    //             'password' => bcrypt($password)
+    //         ]);
 
-            Mail::to($user->email)->send(new ResetPasswordCustomer($user, $password));
+    //         Mail::to($user->email)->send(new ResetPasswordCustomer($user, $password));
 
-            return redirect()->back()->with('alert-success','Mật khẩu mới đã được gửi tới địa chỉ Email của bạn! Vui lòng kiểm tra để lấy mật khẩu mới.');
-        }
-        else {
-            return redirect()->back()->with('alert-error','Không tìm thấy tài khoản trong hệ thống!');
-        }
-    }
+    //         return redirect()->back()->with('alert-success','Mật khẩu mới đã được gửi tới địa chỉ Email của bạn! Vui lòng kiểm tra để lấy mật khẩu mới.');
+    //     }
+    //     else {
+    //         return redirect()->back()->with('alert-error','Không tìm thấy tài khoản trong hệ thống!');
+    //     }
+    // }
 
     public function change(Request $request)
     {

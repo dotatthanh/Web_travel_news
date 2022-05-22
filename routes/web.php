@@ -61,6 +61,14 @@ Route::prefix('admin')->group(function () {
 
 	
 	Route::get('/', [WebController::class, 'index'])->name('web.index');
+	Route::get('/tin-tuc-du-lich', [WebController::class, 'categoryNewsTravel'])->name('web.category-news-travel');
+	Route::get('/tin-tuc-am-thuc', [WebController::class, 'categoryNewsCulinary'])->name('web.category-news-travel');
+	Route::get('/quang-ba', [WebController::class, 'ads'])->name('web.ads');
+
+
+
+
+
 	Route::get('/tim-kiem', [WebController::class, 'search'])->name('web.search');
 // middleware check nếu ---ĐĂNG NHẬP RỒI--- thì k vào đc
 // Route::middleware(['guest_web'])->group(function () {

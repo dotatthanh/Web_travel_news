@@ -259,7 +259,7 @@ img {
 .c-img {
   display: block;
   position: relative;
-  padding-top: 100%; }
+  padding-top: 65%; }
   .c-img img, .c-img .bg {
     position: absolute;
     top: 0;
@@ -608,7 +608,25 @@ header.header {
       letter-spacing: .66px; }
     .video-production .video-demo iframe {
       margin-top: 40px; }
+.video-production .search form input{
+  background: url('../images/icon-searchqueries-20-dark.png') no-repeat 15px;
+  border: 1px solid #aaa;
+  padding: 18px 45px;
+  width: 100%;
+  color: #fff;
+}
 
+.video-production .news time{
+  color: rgba(156,156,156,.75);
+}
+.video-production .news h3{
+  color: #d71919;
+  font-size: 20px;
+}
+.video-production .news a img{
+  width: 100%;
+  height: 100%;
+  }
 iframe {
   width: 100%;
   min-height: 405px; }
