@@ -1,59 +1,45 @@
 @extends('layouts.master')
 
-@section('title') Tin tức du lịch @endsection
+@section('title') {{ __('messages.title.travel') }} @endsection
 
 @section('content')
     <div class="container video-production">
-        <h1 class="title">BLOG</h1>
+        @if (session()->get('locale') == 'vi' || empty(session()->get('locale')))
+            <h1 class="title">{{ $category->name_vi }}</h1>
+        @elseif (session()->get('locale') == 'en')
+            <h1 class="title">{{ $category->name_en }}</h1>
+        @elseif (session()->get('locale') == 'ja')
+            <h1 class="title">{{ $category->name_ja }}</h1>
+        @endif
+
         <div class="search">
-            <h2 class="title mt-3">SEARCH</h2>
+            <h2 class="title mt-3">{{ __('messages.search') }}</h2>
             <form class="mt-3">
-                <input type="text" name="search">
+                <input type="text" name="search" name="search">
             </form>
         </div>
         <div class="row mt-5">
+            @foreach ($data_news as $news)
             <div class="col-lg-3 col-md-9 col-sm-10 col-10 news mb-4">
-                <a href="" class="c-img">
-                    <img src="theme/frontend/images/B1101386-Brighter.jpg">
+                <a href="{{ route('web.news-detail', $news->id) }}" class="c-img">
+                    <img src="{{ asset($news->image) }}">
                 </a>
-                <h3 class="mt-2">Crowne Plaza Phu Quoc Star Bay</h3>
-                <time>Mar 25, 2022</time>
-            </div>
 
-            <div class="col-lg-3 col-md-9 col-sm-10 col-10 news mb-4">
-                <a href="" class="c-img">
-                    <img src="theme/frontend/images/Hotel+and+Resort+Photography+Vietnam_008.jpg">
-                </a>
-                <h3 class="mt-2">Crowne Plaza Phu Quoc Star Bay</h3>
-                <time>Mar 25, 2022</time>
+                @if (session()->get('locale') == 'vi' || empty(session()->get('locale')))
+                    <h3 class="mt-2"><a href="{{ route('web.news-detail', $news->id) }}">{{ $news->title_vi }}</a></h3>
+                @elseif (session()->get('locale') == 'en')
+                    <h3 class="mt-2"><a href="{{ route('web.news-detail', $news->id) }}">{{ $news->title_en }}</a></h3>
+                @elseif (session()->get('locale') == 'ja')
+                    <h3 class="mt-2"><a href="{{ route('web.news-detail', $news->id) }}">{{ $news->title_ja }}</a></h3>
+                @endif
+                
+                <time>{{ date('d-m-Y', strtotime($news->created_at)) }}</time>
             </div>
+            @endforeach
 
-            <div class="col-lg-3 col-md-9 col-sm-10 col-10 news mb-4">
-                <a href="" class="c-img">
-                    <img src="theme/frontend/images/Screen+Shot+2020-10-19+at+12.57.42.jpg">
-                </a>
-                <h3 class="mt-2">Crowne Plaza Phu Quoc Star Bay</h3>
-                <time>Mar 25, 2022</time>
-            </div>
-
-            <div class="col-lg-3 col-md-9 col-sm-10 col-10 news mb-4">
-                <a href="" class="c-img">
-                    <img src="theme/frontend/images/WhatsApp+Image+2020-11-18+at+2.08.58+PM.jpeg">
-                </a>
-                <h3 class="mt-2">Crowne Plaza Phu Quoc Star Bay</h3>
-                <time>Mar 25, 2022</time>
-            </div>
-
-            <div class="col-lg-3 col-md-9 col-sm-10 col-10 news mb-4">
-                <a href="" class="c-img">
-                    <img src="theme/frontend/images/B1101386-Brighter.jpg">
-                </a>
-                <h3 class="mt-2">Crowne Plaza Phu Quoc Star Bay</h3>
-                <time>Mar 25, 2022</time>
+            <div class="m-auto">
+                {{ $data_news->links() }}
             </div>
         </div>
     </div>
 @endsection
-
-@push('js')
-@endpush

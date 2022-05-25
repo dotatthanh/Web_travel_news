@@ -25,7 +25,15 @@ class StoreCategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => [
+            'name_vi' => [
+                'required', 'max:255',
+                Rule::unique('categories')->ignore($this->category),
+            ],
+            'name_en' => [
+                'required', 'max:255',
+                Rule::unique('categories')->ignore($this->category),
+            ],
+            'name_ja' => [
                 'required', 'max:255',
                 Rule::unique('categories')->ignore($this->category),
             ],
@@ -37,9 +45,15 @@ class StoreCategoryRequest extends FormRequest
     {
         return [
             'type.required' => 'Loại danh mục là trường bắt buộc.', 
-            'name.required' => 'Tên danh mục là trường bắt buộc.', 
-            'name.max' => 'Tên danh mục không được dài quá :max ký tự.', 
-            'name.unique' => 'Tên danh mục đã tồn tại.', 
+            'name_vi.required' => 'Tên danh mục (Tiếng Việt) là trường bắt buộc.', 
+            'name_vi.max' => 'Tên danh mục (Tiếng Việt) không được dài quá :max ký tự.', 
+            'name_vi.unique' => 'Tên danh mục (Tiếng Việt) đã tồn tại.', 
+            'name_en.required' => 'Tên danh mục (Tiếng Anh) là trường bắt buộc.', 
+            'name_en.max' => 'Tên danh mục (Tiếng Anh) không được dài quá :max ký tự.', 
+            'name_en.unique' => 'Tên danh mục (Tiếng Anh) đã tồn tại.', 
+            'name_ja.required' => 'Tên danh mục (Tiếng Nhật) là trường bắt buộc.', 
+            'name_ja.max' => 'Tên danh mục (Tiếng Nhật) không được dài quá :max ký tự.', 
+            'name_ja.unique' => 'Tên danh mục (Tiếng Nhật) đã tồn tại.', 
         ];
     }
 }

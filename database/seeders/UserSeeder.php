@@ -22,9 +22,9 @@ class UserSeeder extends Seeder
         	'email' => 'admin@gmail.com',
         	'password' => bcrypt('123123123'),
         	'name' => 'Admin',
-        	'birthday' => '1999-03-21',
+        	'birthday' => '2000-10-22',
         	'phone_number' => '0563047024',
-        	'address' => 'Đại học kiến trúc Hà Nội',
+        	'address' => 'Đại học Công nghệ TP.HCM',
         	'gender' => 'Nam',
         ]);
     }

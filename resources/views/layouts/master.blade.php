@@ -31,32 +31,48 @@
         <div class="container">
             <div class="row align-items-center justify-content-between">
                 <div class="col-lg-3 col-md-5 col-sm-6 col-8">
-                    <a href="#" title="" class="c-img logo">
+                    <a href="{{ route('web.index') }}" title="" class="c-img logo">
                         <img src="{{ asset('images/logo.png') }}" alt="">
                     </a>
                 </div>
                 <div class="col-lg-auto menu">
                     <ul>
-                        <li><a href="{{ route('web.index') }}" title="">Trang chủ</a></li>
-                        <li><a href="{{ route('web.ads') }}" title="">Quảng bá</a></li>
-                        <li><a href="javascript:void(0)" title="">Tin tức du lịch</a>
+                        <li><a href="{{ route('web.index') }}" title="">{{ __('messages.menu.home') }}</a></li>
+                        <li><a href="{{ route('web.ads') }}" title="">{{ __('messages.menu.advertise') }}</a></li>
+                        <li><a href="javascript:void(0)" title="">{{ __('messages.title.travel') }}</a>
                             <ul>
-                                <li><a href="#" title="">Home</a></li>
-                                <li><a href="#" title="">Video Production</a></li>
-                                <li><a href="#" title="">Showreels</a></li>
-                                <li><a href="#" title="">Client List</a></li>
-                                <li><a href="#" title="">More Info</a></li>
+                                @foreach ($category_travels as $category_travel)
+                                    @if (session()->get('locale') == 'vi' || empty(session()->get('locale')))
+                                        <li><a href="{{ route('web.category-news-travel', $category_travel->id) }}" title="">{{ $category_travel->name_vi }}</a></li>
+                                    @elseif (session()->get('locale') == 'en')
+                                        <li><a href="{{ route('web.category-news-travel', $category_travel->id) }}" title="">{{ $category_travel->name_en }}</a></li>
+                                    @elseif (session()->get('locale') == 'ja')
+                                        <li><a href="{{ route('web.category-news-travel', $category_travel->id) }}" title="">{{ $category_travel->name_ja }}</a></li>
+                                    @endif
+                                @endforeach
                             </ul>
                         </li>
-                        <li><a href="javascript:void(0)" title="">Tin tức ẩm thực</a>
+                        <li>
+                            <a href="javascript:void(0)" title="">{{ __('messages.title.food') }}</a>
                             <ul>
-                                <li><a href="#" title="">Home</a></li>
-                                <li><a href="#" title="">Video Production</a></li>
-                                <li><a href="#" title="">Showreels</a></li>
-                                <li><a href="#" title="">Client List</a></li>
-                                <li><a href="#" title="">More Info</a></li>
+                                @foreach ($category_foods as $category_food)
+                                    @if (session()->get('locale') == 'vi' || empty(session()->get('locale')))
+                                        <li><a href="{{ route('web.category-news-food', $category_food->id) }}" title="">{{ $category_food->name_vi }}</a></li>
+                                    @elseif (session()->get('locale') == 'en')
+                                        <li><a href="{{ route('web.category-news-food', $category_food->id) }}" title="">{{ $category_food->name_en }}</a></li>
+                                    @elseif (session()->get('locale') == 'ja')
+                                        <li><a href="{{ route('web.category-news-food', $category_food->id) }}" title="">{{ $category_food->name_ja }}</a></li>
+                                    @endif
+                                @endforeach
                             </ul>
                         </li>
+                        <li>
+                            <select class="form-control changeLang">
+                                <option value="vi" {{ session()->get('locale') == 'vi' ? 'selected' : '' }}>VietNam</option>
+                                <option value="en" {{ session()->get('locale') == 'en' ? 'selected' : '' }}>English</option>
+                                <option value="ja" {{ session()->get('locale') == 'ja' ? 'selected' : '' }}>Japan</option>
+                            </select>
+                        </li>   
                     </ul>
                 </div>
             </div>
@@ -67,42 +83,41 @@
 
     <div class="menu-mobile">
         <ul>
-            <li><a href="#" title="">Home</a></li>
-            <li><a href="#" title="" title="">Video Production</a>
+            <li><a href="{{ route('web.index') }}" title="">{{ __('messages.menu.home') }}</a></li>
+            <li><a href="{{ route('web.ads') }}" title="">{{ __('messages.menu.advertise') }}</a></li>
+            <li><a href="javascript:void(0)" title="">Tin tức du lịch</a>
                 <ul>
-                    <li><a href="#" title="">Hotels, Resorts, and Properties</a></li>
-                    <li><a href="#" title="">Video Production</a></li>
-                    <li><a href="#" title="">Showreels</a></li>
-                    <li><a href="#" title="">Client List</a></li>
-                    <li><a href="#" title="">More Info</a></li>
+                    @foreach ($category_travels as $category_travel)
+                        @if (session()->get('locale') == 'vi' || empty(session()->get('locale')))
+                            <li><a href="{{ route('web.category-news-travel', $category_travel->id) }}" title="">{{ $category_travel->name_vi }}</a></li>
+                        @elseif (session()->get('locale') == 'en')
+                            <li><a href="{{ route('web.category-news-travel', $category_travel->id) }}" title="">{{ $category_travel->name_en }}</a></li>
+                        @elseif (session()->get('locale') == 'ja')
+                            <li><a href="{{ route('web.category-news-travel', $category_travel->id) }}" title="">{{ $category_travel->name_ja }}</a></li>
+                        @endif
+                    @endforeach
                 </ul>
             </li>
-            <li><a href="#" title="">Showreels</a>
+            <li><a href="javascript:void(0)" title="">Tin tức ẩm thực</a>
                 <ul>
-                    <li><a href="#" title="">Home</a></li>
-                    <li><a href="#" title="">Video Production</a></li>
-                    <li><a href="#" title="">Showreels</a></li>
-                    <li><a href="#" title="">Client List</a></li>
-                    <li><a href="#" title="">More Info</a></li>
-                </ul>
-            </li>
-            <li><a href="#" title="">Client List</a></li>
-            <li><a href="#" title="">More Info</a>
-                <ul>
-                    <li><a href="#" title="">Home</a></li>
-                    <li><a href="#" title="">Video Production</a></li>
-                    <li><a href="#" title="">Showreels</a></li>
-                    <li><a href="#" title="">Client List</a></li>
-                    <li><a href="#" title="">More Info</a></li>
+                    @foreach ($category_foods as $category_food)
+                        @if (session()->get('locale') == 'vi' || empty(session()->get('locale')))
+                            <li><a href="{{ route('web.category-news-food', $category_food->id) }}" title="">{{ $category_food->name_vi }}</a></li>
+                        @elseif (session()->get('locale') == 'en')
+                            <li><a href="{{ route('web.category-news-food', $category_food->id) }}" title="">{{ $category_food->name_en }}</a></li>
+                        @elseif (session()->get('locale') == 'ja')
+                            <li><a href="{{ route('web.category-news-food', $category_food->id) }}" title="">{{ $category_food->name_ja }}</a></li>
+                        @endif
+                    @endforeach
                 </ul>
             </li>
         </ul>
         <div class="info-contact">
-            <p>Mott Visuals</p>
-            <p>Floor 2, Packexim I Building No 49, Lane 15, An Duong Vuong</p>
-            <p>Hanoi</p>
-            <p>Vietnam</p>
-            <p><a href="tel:0564654654" title="">+84 (0)985828883</a></p>
+            <p>{{ __('messages.info.web_name') }}</p>
+            <p>{{ __('messages.info.address') }}</p>
+            <p>{{ __('messages.info.province') }}</p>
+            <p>{{ __('messages.info.country') }}</p>
+            <p><a href="tel:0564654654" title="">{{ __('messages.info.phone') }}</a></p>
         </div>
     </div>
 
@@ -123,6 +138,12 @@
     <script src="{{ asset('jquery-fancybox/dist/jquery.fancybox.min.js') }}"></script>
 
     <script type="text/javascript">
+        var url = "{{ route('web.change') }}";
+  
+        $(".changeLang").change(function(){
+            window.location.href = url + "?lang="+ $(this).val();
+        });
+
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

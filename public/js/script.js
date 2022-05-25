@@ -96,10 +96,25 @@ var Slider_client_list = function(){
 	}
 };
 
+var Slider_client_list_detail = function(){
+	if($('.slider-client-list-detail').length>0){
+		$('.slider-client-list-detail').slick({
+			slidesToShow: 1,
+			infinite: false,
+			speed: 400,
+			arrows: false,
+			dots: false,
+			autoplay: true,
+			autoplaySpeed: 1000,
+		});
+	}
+};
+
 $(function(){
 	Menu_mobile();
 	Menu();
 	Email_mb();
 	Backtotop();
 	Slider_client_list();
+	Slider_client_list_detail();
 });

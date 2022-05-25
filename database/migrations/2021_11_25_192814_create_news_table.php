@@ -15,11 +15,18 @@ class CreateNewsTable extends Migration
     {
         Schema::create('news', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
+            $table->string('title_vi');
+            $table->string('title_en');
+            $table->string('title_ja');
             $table->string('image');
-            $table->string('category_id');
-            $table->text('summary');
-            $table->longText('content');
+            $table->unsignedBigInteger('category_id');
+            $table->text('summary_vi');
+            $table->text('summary_en');
+            $table->text('summary_ja');
+            $table->longText('content_vi');
+            $table->longText('content_en');
+            $table->longText('content_ja');
+            $table->foreign('category_id')->references('id')->on('categories');
             $table->timestamps();
         });
     }

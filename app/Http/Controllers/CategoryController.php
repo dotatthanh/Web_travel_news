@@ -62,7 +62,9 @@ class CategoryController extends Controller
             
             $category = Category::create([
                 'code' => '',
-                'name' => $request->name,
+                'name_vi' => $request->name_vi,
+                'name_en' => $request->name_en,
+                'name_ja' => $request->name_ja,
                 'type' => $request->type,
             ]);
 
@@ -117,7 +119,9 @@ class CategoryController extends Controller
             DB::beginTransaction();
 
             $category->update([
-                'name' => $request->name,
+                'name_vi' => $request->name_vi,
+                'name_en' => $request->name_en,
+                'name_ja' => $request->name_ja,
                 'type' => $request->type,
             ]);
             
@@ -139,11 +143,6 @@ class CategoryController extends Controller
     {
         try {
             DB::beginTransaction();
-
-            if ($category->products->count() > 0) {
-                return redirect()->back()->with('alert-error','Xóa danh mục thất bại! Danh mục '.$category->name.' đang có sản phẩm.');
-            }
-
             if ($category->news->count() > 0) {
                 return redirect()->back()->with('alert-error','Xóa danh mục thất bại! Danh mục '.$category->name.' đang có tin tức.');
             }

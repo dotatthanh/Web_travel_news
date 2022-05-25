@@ -82,7 +82,7 @@
                                                 <tr>
                                                     <td class="text-center">{{ $stt++ }}</td>
                                                     <td>{{ $category->code }}</td>
-                                                    <td>{{ $category->name }}</td>
+                                                    <td>{{ $category->name_vi }}</td>
                                                     <td>{{ $category->type ? 'Tin tức du lịch' : 'Tin tức ẩm thực' }}</td>
                                                     <td class="text-center">
                                                         <ul class="list-inline font-size-20 contact-links mb-0">

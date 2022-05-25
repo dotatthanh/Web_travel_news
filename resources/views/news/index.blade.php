@@ -73,11 +73,11 @@
                                             @foreach ($news as $new)
                                                 <tr>
                                                     <td class="text-center">{{ $stt++ }}</td>
-                                                    <td>{{ $new->title }}</td>
+                                                    <td>{{ $new->title_vi }}</td>
                                                     <td>
                                                         <img src="{{ asset($new->image) }}" alt="" style="max-width: 200px;">
                                                     </td>
-                                                    <td>{{ $new->category->name }}</td>
+                                                    <td>{{ $new->category->name_vi }}</td>
                                                     <td>
                                                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#summary{{ $new->id }}">Xem</button>
 
@@ -91,7 +91,7 @@
                                                                         </button>
                                                                     </div>
                                                                     <div class="modal-body">
-                                                                        {!! $new->summary !!}
+                                                                        {!! $new->summary_vi !!}
                                                                     </div>
                                                                     <div class="modal-footer">
                                                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -113,7 +113,7 @@
                                                                         </button>
                                                                     </div>
                                                                     <div class="modal-body">
-                                                                        {!! $new->content !!}
+                                                                        {!! $new->content_vi !!}
                                                                     </div>
                                                                     <div class="modal-footer">
                                                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

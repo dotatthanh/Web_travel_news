@@ -7,9 +7,25 @@
         <div class="row">
             <div class="col-sm-6">
                 <div class="form-group">
-                    <label for="name">Tên danh mục <span class="text-danger">*</span></label>
-                    <input id="name" name="name" type="text" class="form-control" placeholder="Tên danh mục" value="{{ old('name', $data_edit->name ?? '') }}">
-                    {!! $errors->first('name', '<span class="error">:message</span>') !!}
+                    <label for="name_vi">Tên danh mục (Tiếng Việt) <span class="text-danger">*</span></label>
+                    <input id="name_vi" name="name_vi" type="text" class="form-control" placeholder="Tên danh mục (Tiếng Việt)" value="{{ old('name_vi', $data_edit->name_vi ?? '') }}">
+                    {!! $errors->first('name_vi', '<span class="error">:message</span>') !!}
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="name_en">Tên danh mục (Tiếng Anh) <span class="text-danger">*</span></label>
+                    <input id="name_en" name="name_en" type="text" class="form-control" placeholder="Tên danh mục (Tiếng Anh)" value="{{ old('name_en', $data_edit->name_en ?? '') }}">
+                    {!! $errors->first('name_en', '<span class="error">:message</span>') !!}
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="name_ja">Tên danh mục (Tiếng Nhật) <span class="text-danger">*</span></label>
+                    <input id="name_ja" name="name_ja" type="text" class="form-control" placeholder="Tên danh mục (Tiếng Nhật)" value="{{ old('name_ja', $data_edit->name_ja ?? '') }}">
+                    {!! $errors->first('name_ja', '<span class="error">:message</span>') !!}
                 </div>
             </div>
 

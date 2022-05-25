@@ -40,7 +40,7 @@ class NewsController extends Controller
      */
     public function create()
     {
-        $categories = Category::where('type', 0)->get();
+        $categories = Category::all();
 
         $data = [
             'categories' => $categories,
@@ -61,17 +61,23 @@ class NewsController extends Controller
             DB::beginTransaction();
 
             if ($request->file('image')) {
-                $name = time().'_'.$request->image->getClientOriginalName();
+                $name = time().$request->image->getClientOriginalExtension();
                 $file_path_image = 'uploads/news/'.$name;
                 Storage::disk('public_uploads')->putFileAs('news', $request->image, $name);
             }
             
             $create = News::create([
-                'title' => $request->title,
+                'title_vi' => $request->title_vi,
+                'title_en' => $request->title_en,
+                'title_ja' => $request->title_ja,
                 'image' => $file_path_image,
                 'category_id' => $request->category_id,
-                'content' => $request->content,
-                'summary' => $request->summary,
+                'content_vi' => $request->content_vi,
+                'content_en' => $request->content_en,
+                'content_ja' => $request->content_ja,
+                'summary_vi' => $request->summary_vi,
+                'summary_en' => $request->summary_en,
+                'summary_ja' => $request->summary_ja,
             ]);
             
             DB::commit();
@@ -124,10 +130,16 @@ class NewsController extends Controller
             DB::beginTransaction();
 
             $data = [
-                'title' => $request->title,
+                'title_vi' => $request->title_vi,
+                'title_en' => $request->title_en,
+                'title_ja' => $request->title_ja,
                 'category_id' => $request->category_id,
-                'content' => $request->content,
-                'summary' => $request->summary,
+                'content_vi' => $request->content_vi,
+                'content_en' => $request->content_en,
+                'content_ja' => $request->content_ja,
+                'summary_vi' => $request->summary_vi,
+                'summary_en' => $request->summary_en,
+                'summary_ja' => $request->summary_ja,
             ];
 
             if ($request->file('image')) {

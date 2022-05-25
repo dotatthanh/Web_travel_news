@@ -14,9 +14,9 @@ class Controller extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
     public function __construct() {
-        $category_products = Category::where('type', 1)->get();
-        $category_news = Category::where('type', 0)->get();
-        View::share('category_products', $category_products);
-        View::share('category_news', $category_news);
+        $category_travels = Category::where('type', 1)->get();
+        $category_foods = Category::where('type', 0)->get();
+        View::share('category_travels', $category_travels);
+        View::share('category_foods', $category_foods);
     }
 }

@@ -13,7 +13,9 @@ class Category extends Model
 
     protected $fillable = [
     	'code',
-    	'name',
+    	'name_vi',
+        'name_en',
+        'name_ja',
     	'type',
     ];
 
@@ -21,11 +23,11 @@ class Category extends Model
     	return $this->hasMany(News::class);
     }
 
-    public function products(){
-    	return $this->hasMany(Product::class);
-    }
+    // public function products(){
+    // 	return $this->hasMany(Product::class);
+    // }
 
-    public function getProducts(){
-        return $this->products()->where('status', 1)->limit(4)->latest();
-    }
+    // public function getProducts(){
+    //     return $this->products()->where('status', 1)->limit(4)->latest();
+    // }
 }
