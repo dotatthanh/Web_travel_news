@@ -440,7 +440,7 @@ body {
 .title {
   text-transform: uppercase;
   font-weight: bold;
-  color: #fff;
+  /*color: #fff;*/
   font-size: 23px;
   border-bottom: 1px solid #bbb;
   text-align: center;
