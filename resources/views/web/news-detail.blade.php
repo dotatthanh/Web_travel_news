@@ -76,11 +76,11 @@
                     </a>
 
                     @if (session()->get('locale') == 'vi' || empty(session()->get('locale')))
-                        <h3 class="mt-2 text-danger"><a href="{{ route('web.news-detail', $news->id) }}">{{ $news->title_vi }}</a></h3>
+                        <h3 class="mt-2"><a href="{{ route('web.news-detail', $news->id) }}">{{ $news->title_vi }}</a></h3>
                     @elseif (session()->get('locale') == 'en')
-                        <h3 class="mt-2 text-danger"><a href="{{ route('web.news-detail', $news->id) }}">{{ $news->title_en }}</a></h3>
+                        <h3 class="mt-2"><a href="{{ route('web.news-detail', $news->id) }}">{{ $news->title_en }}</a></h3>
                     @elseif (session()->get('locale') == 'ja')
-                        <h3 class="mt-2 text-danger"><a href="{{ route('web.news-detail', $news->id) }}">{{ $news->title_ja }}</a></h3>
+                        <h3 class="mt-2"><a href="{{ route('web.news-detail', $news->id) }}">{{ $news->title_ja }}</a></h3>
                     @endif
                 </div>
                 @endforeach
