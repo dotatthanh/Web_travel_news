@@ -74,12 +74,12 @@
                     <a href="{{ route('web.index') }}" title="" class="c-img logo">
                         <img src="{{ asset('images/logo.png') }}" alt="" title="">
                     </a>
-                    <h1>Asia & Beyond</h1>
-                    <a href="{{ route('web.ads') }}" title="" class="link-web">Advertise</a>
+                    <h1>FOOD & TRAVEL</h1>
+                    <a href="{{ route('web.ads') }}" title="" class="link-web">HOME PAGE</a>
                     <div class="icon">
                         <a href="#" title=""><i class="fa fa-envelope-o" aria-hidden="true"></i></a>
-                        <a href="#" title=""><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                        <a href="#" title=""><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                        <a href="https://www.facebook.com/pis.nguyens.9" title=""><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                        <a href="https://www.instagram.com/nguyenquang3830/" title=""><i class="fa fa-instagram" aria-hidden="true"></i></a>
                         <a href="#" title=""><i class="fa fa-twitter" aria-hidden="true"></i></a>
                     </div>
                 </div>

@@ -24,6 +24,14 @@
         <link href="{{ asset('css/icons.min.css') }}" rel="stylesheet" type="text/css">
         <!-- App Css-->
         <link href="{{ asset('css/app.min.css') }}" id="app-style" rel="stylesheet" type="text/css">
+        
+    <style>
+        .modal-body {
+          position:relative;
+          overflow:auto;
+          height:100%;
+      }
+    </style>
     </head>
     <body data-sidebar="dark">
         <!-- Begin page -->

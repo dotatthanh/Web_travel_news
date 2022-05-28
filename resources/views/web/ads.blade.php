@@ -3,7 +3,7 @@
 @section('title') Tin tức du lịch @endsection
 
 @section('content')
-    <div class="container client-list">
+    <div class="container client-list mb-5">
         <div class="row justify-content-center">
             <div class="col-lg-7 col-md-9 col-sm-10 col-10">
                 <h1 class="title">{{ __('messages.page.ads') }}</h1>
