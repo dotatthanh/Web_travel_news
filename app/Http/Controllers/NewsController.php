@@ -22,7 +22,7 @@ class NewsController extends Controller
         $news = News::paginate(10);
 
         if ($request->search) {
-            $news = News::where('title', 'like', '%'.$request->search.'%')->paginate(10);
+            $news = News::where('title_vi', 'like', '%'.$request->search.'%')->paginate(10);
             $news->appends(['search' => $request->search]);
         }
 

@@ -65,6 +65,7 @@
                                                 <th>Danh mục</th>
                                                 <th>Tóm tắt</th>
                                                 <th>Nội dung</th>
+                                                <th>Lượt xem</th>
                                                 <th class="text-center">Hành động</th>
                                             </tr>
                                         </thead>
@@ -122,6 +123,7 @@
                                                             </div>
                                                         </div>
                                                     </td>
+                                                    <td>{{ $new->view }}</td>
                                                     <td class="text-center">
                                                         <ul class="list-inline font-size-20 contact-links mb-0">
                                                             @can('Chỉnh sửa tin tức')

@@ -21,6 +21,7 @@ class News extends Model
     	'content_vi',
         'content_en',
         'content_ja',
+        'view',
     ];
 
     public function category()

@@ -19,7 +19,7 @@ class CategoryController extends Controller
         $categories = Category::query();
 
         if ($request->name) {
-            $categories->where('name', 'like', '%'.$request->name.'%');
+            $categories->where('name_vi', 'like', '%'.$request->name.'%');
         }
 
         if (isset($request->type)) {

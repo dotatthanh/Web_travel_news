@@ -26,6 +26,7 @@ class CreateNewsTable extends Migration
             $table->longText('content_vi');
             $table->longText('content_en');
             $table->longText('content_ja');
+            $table->integer('view')->default(0);
             $table->foreign('category_id')->references('id')->on('categories');
             $table->timestamps();
         });

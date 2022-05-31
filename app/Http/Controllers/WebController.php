@@ -91,6 +91,7 @@ class WebController extends Controller
     {
     	$news = News::findOrFail($id);
     	$random_news = News::inRandomOrder()->limit(5)->get();
+        $news->update(['view' => $news->view+1]);
 
     	$data = [
     		'news' => $news,

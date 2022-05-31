@@ -14,6 +14,11 @@
                     <h1 class="title">{{ $news->title_ja }}</h1>
                 @endif
 
+                <div class="mt-3">
+                    <time class="text-secondary">{{ date('d-m-Y', strtotime($news->created_at)) }}</time>
+                    <p class="d-inline-block ml-3"><i class="fa fa-eye" aria-hidden="true"></i> {{ $news->view }}</p>
+                </div>
+
                 <div class="summary mt-3">
                     @if (session()->get('locale') == 'vi' || empty(session()->get('locale')))
                         {!! $news->summary_vi !!}

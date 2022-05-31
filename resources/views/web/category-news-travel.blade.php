@@ -34,6 +34,7 @@
                 @endif
                 
                 <time>{{ date('d-m-Y', strtotime($news->created_at)) }}</time>
+                <p class="float-right"><i class="fa fa-eye" aria-hidden="true"></i> {{ $news->view }}</p>
             </div>
             @endforeach
 
