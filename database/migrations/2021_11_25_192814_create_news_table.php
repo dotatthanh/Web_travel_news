@@ -23,9 +23,9 @@ class CreateNewsTable extends Migration
             $table->text('summary_vi');
             $table->text('summary_en');
             $table->text('summary_ja');
-            $table->longText('content_vi');
-            $table->longText('content_en');
-            $table->longText('content_ja');
+            $table->mediumText('content_vi');
+            $table->mediumText('content_en');
+            $table->mediumText('content_ja');
             $table->integer('view')->default(0);
             $table->foreign('category_id')->references('id')->on('categories');
             $table->timestamps();
