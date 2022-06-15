@@ -20,9 +20,9 @@ class CreateNewsTable extends Migration
             $table->string('title_ja');
             $table->string('image');
             $table->unsignedBigInteger('category_id');
-            $table->text('summary_vi');
-            $table->text('summary_en');
-            $table->text('summary_ja');
+            $table->mediumText('summary_vi');
+            $table->mediumText('summary_en');
+            $table->mediumText('summary_ja');
             $table->mediumText('content_vi');
             $table->mediumText('content_en');
             $table->mediumText('content_ja');
